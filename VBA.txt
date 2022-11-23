@@ -1,0 +1,17 @@
+Sub Auto_Open()
+Application.DisplayAlerts = False
+Application.ScreenUpdating = False
+
+'Change this with your source file location
+Workbooks.Open Filename:="source_file" , UpdateLinks:=3
+
+'Change this with your Google Drive
+Workbooks("source_file_name.xlsx").SaveAs Filename:="Google Drive " & "(Backup) " & Format(Now(), "(yyyy-mm-dd hhmm)") & ".xlsx"
+
+ActiveWindow.Close
+
+Workbooks("Backup.xlsm").Close SaveChanges:=True
+
+Application.DisplayAlerts = True
+Application.ScreenUpdating = True
+End Sub
